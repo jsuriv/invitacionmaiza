@@ -1,0 +1,468 @@
+/* style.css - Ultra Premium Edition */
+:root {
+  --bg-deep: #05010a;
+  --bg-dark: #120422;
+  --bg-mid: #240a40;
+  --bg-light: #3d1466;
+  --gold-light: #fff2c8;
+  --gold: #d4af37;
+  --gold-dark: #997a15;
+  --text-main: #ffffff;
+  --text-muted: #c9bade;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: var(--bg-deep);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-main);
+}
+
+/* --- Loader --- */
+#loader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg-deep);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(212, 175, 55, 0.2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- Fixed Animated Background --- */
+.bg-fixed {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  background: var(--bg-deep) url('bg.png') no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+}
+.bg-fixed::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(5, 1, 10, 0.65); /* Escurece la imagen para no perder legibilidad */
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  filter: blur(60px);
+  opacity: 0.45; /* Reducida la opacidad para que se vea el fondo fotorealista */
+  z-index: 1;
+}
+
+.blob-1 { top: -20%; left: -20%; width: 70%; height: 70%; background: var(--bg-light); border-radius: 50%; animation: pulse 15s ease-in-out infinite alternate; }
+.blob-2 { top: 10%; right: -20%; width: 60%; height: 80%; background: var(--bg-mid); border-radius: 50%; animation: pulse 12s ease-in-out infinite alternate-reverse; }
+.blob-3 { bottom: -30%; left: 10%; width: 80%; height: 60%; background: var(--bg-light); border-radius: 50%; animation: pulse 18s ease-in-out infinite alternate; }
+
+@keyframes pulse {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.2) translate(5%, 5%); }
+}
+
+#particles-canvas {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen; /* Makes gold particles pop brilliantly */
+}
+
+/* --- Scroll Container --- */
+.slider-container {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 80px 0; /* Breathing room at top and bottom */
+}
+.slider-container::-webkit-scrollbar { display: none; }
+
+/* --- True Glassmorphism Cards --- */
+.card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 20px; /* Tarjetas mucho más apegadas */
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.card:last-child { margin-bottom: 0; }
+
+.card-content {
+  width: 96%; /* Mayor tamaño horizontal */
+  max-width: 600px; /* Mayor tamaño máximo */
+  padding: 55px 30px; /* Ligeramente más grande */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Ultra-premium glassmorphism */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(212, 175, 55, 0.05);
+}
+
+/* --- Typography --- */
+.subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.5em; /* Extremely wide tracking for luxury feel */
+  color: var(--gold-light);
+  margin-bottom: 25px;
+  font-weight: 500;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.title {
+  font-size: clamp(2rem, 8vw, 3rem); /* Fuente fluida para evitar colisiones */
+  line-height: 1.15;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  background: linear-gradient(to bottom right, #ffffff, #fbeea0, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.agradecimiento-text {
+  font-size: 1.1rem; /* Reducido para evitar desbordes */
+  font-style: italic;
+  color: var(--text-main);
+  margin: 15px 0;
+  line-height: 1.6;
+  font-weight: 300;
+  opacity: 0.95;
+}
+.decorative-stars {
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin: 15px 0;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+}
+
+.date-large {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.date-large .day {
+  font-size: clamp(3.5rem, 15vw, 5rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #fff;
+  background: linear-gradient(to bottom, #fff, var(--gold-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.date-large .month {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 15px;
+  font-weight: 400;
+}
+
+.address-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+/* --- Icons --- */
+.icon-container, .icon-container-small {
+  margin-bottom: 20px;
+}
+.cap-icon { width: 80px; height: 80px; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4)); animation: float 6s ease-in-out infinite; }
+.diploma-icon { width: 60px; height: 60px; filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4)); animation: float 6s ease-in-out infinite 1s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* --- Beautiful Maps --- */
+.big-map-link {
+  display: block;
+  width: 100%;
+  height: 350px;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+}
+
+.big-map-link:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(212, 175, 55, 0.2);
+}
+
+.big-map-link iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Magic filter to make Google Maps look like a dark purple/gold custom map */
+  filter: invert(0.9) sepia(0.3) hue-rotate(220deg) saturate(1.5) brightness(0.8) contrast(1.2);
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(5, 1, 10, 0.9) 0%, rgba(5, 1, 10, 0.2) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 30px;
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: opacity 0.4s;
+  z-index: 2;
+}
+
+.big-map-link:hover .map-overlay { opacity: 0.8; }
+
+.map-pin {
+  width: 35px; height: 35px;
+  fill: var(--gold);
+  margin-bottom: 15px;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
+}
+
+/* --- Final Card --- */
+.name-script {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3.5rem, 15vw, 5rem);
+  color: var(--gold-light);
+  line-height: 1.2;
+  text-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+  margin: 10px 0;
+  padding-right: 5px;
+}
+.name-formal {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.parents {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  line-height: 2;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin: 30px 0;
+}
+.parents-title {
+  color: var(--gold);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.message {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-main);
+  margin-bottom: 30px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.confirm-text {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: var(--gold-light);
+  opacity: 0.8;
+}
+
+.btn-confirm {
+  display: inline-block;
+  padding: 18px 45px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 50px;
+  color: var(--bg-deep);
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: linear-gradient(135deg, #fbeea0, #d4af37);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+.btn-confirm:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.5);
+  border-color: #fff;
+}
+
+/* --- Video Carousel --- */
+.video-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  width: 100%;
+  padding-bottom: 10px;
+  scroll-snap-type: x mandatory;
+}
+.video-carousel::-webkit-scrollbar {
+  height: 4px;
+}
+.video-carousel::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.5);
+  border-radius: 10px;
+}
+.video-carousel iframe {
+  flex: 0 0 95%;
+  width: 95%;
+  min-width: 280px;
+  height: 200px;
+  border-radius: 15px;
+  scroll-snap-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* --- Welcome Overlay --- */
+#welcome-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg-deep) url('bg.png') no-repeat center center;
+  background-size: cover;
+  z-index: 9000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 1s;
+}
+#welcome-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(5, 1, 10, 0.8);
+  z-index: 0;
+}
+.envelope-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+.envelope-content h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4rem;
+  color: var(--gold-light);
+  margin: 0 0 15px 0;
+  text-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+.envelope-content p {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 30px;
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8), 0 0 50px rgba(212, 175, 55, 0.4); }
+  100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+}
+
+#open-invitation {
+  animation: pulse-glow 2.5s infinite;
+}
+
+/* Prevent scrolling when overlay is active */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Responsiveness for small screens */
+@media (max-width: 480px) {
+  .card-content { padding: 45px 25px; width: 98%; }
+  .big-map-link { height: 260px; }
+  .btn-confirm { padding: 14px 30px; font-size: 0.85rem; }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Graduación - Maiza Arancibia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" integrity="sha512-RX/OFugIG/bvl50ZTaO58IQPMtIE/R0iRj8yX19G4A4z5/aM1sBvN+Dk18/m+W42k21o7+Q85yGZzKz4W8R2cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body class="no-scroll">
+  <!-- Loader Screen -->
+  <div id="loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Welcome Overlay (to bypass autoplay block) -->
+  <div id="welcome-overlay">
+    <div class="envelope-content">
+      <h2>Maiza</h2>
+      <p>TE INVITA A SU GRADUACIÓN</p>
+      <button id="open-invitation" class="btn-confirm mt-4">Abrir Invitación</button>
+    </div>
+  </div>
+
+  <!-- Fondo fijo con animaciones y partículas -->
+  <div class="bg-fixed">
+    <canvas id="particles-canvas"></canvas>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- Contenedor con Scroll Snap (5 Cards) -->
+  <div class="slider-container">
+    
+    <!-- CARD 1: INICIO -->
+    <section class="card">
+      <div class="card-content" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-tilt-scale="1.02" data-tilt-speed="1000">
+        <div class="icon-container">
+          <svg viewBox="0 0 100 100" class="cap-icon">
+            <path d="M50,25 L90,40 L50,55 L10,40 Z" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+            <path d="M25,48 L25,65 Q50,75 75,65 L75,48" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+            <path d="M80,44 L80,70" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+            <circle cx="80" cy="72" r="2.5" fill="var(--gold)"/>
+            <path d="M78,74 L82,74 L80,85 Z" fill="var(--gold)"/>
+          </svg>
+        </div>
+        <div class="subtitle">FAMILIA & AMIGOS</div>
+        <h1 class="title">Festejaré<br>mi graduación</h1>
+        <div class="invita-section mt-4">
+          <div class="name-script">Maiza</div>
+          <div class="name-formal">Lic. Maiza Arancibia Mallon</div>
+        </div>
+        <div class="scroll-prompt mt-4">
+          <span class="pulse-text">Desliza para ver más</span>
+          <div class="arrow-down"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- CARD 2: AGRADECIMIENTO -->
+    <section class="card">
+      <div class="card-content" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-tilt-scale="1.02" data-tilt-speed="1000">
+        <h2 class="section-title">Agradecimiento</h2>
+        <div class="decorative-stars">✨</div>
+        <p class="agradecimiento-text">"A mis padres, por ser mi guía, mi apoyo, mi ejemplo a seguir y sus sacrificios silenciosos. Gracias por enseñarme a ser fuerte y nunca rendirme."</p>
+        <p class="agradecimiento-text">"A Dios, por iluminar mi camino y darme fuerzas para llegar hasta aquí."</p>
+        <div class="decorative-stars">✨</div>
+
+      </div>
+    </section>
+
+    <!-- CARD VIDEOS (RECUERDOS) -->
+    <section class="card">
+      <div class="card-content" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-tilt-scale="1.02" data-tilt-speed="1000">
+        <h2 class="section-title">Nuestros Videos</h2>
+        <p class="agradecimiento-text" style="font-size: 0.9rem; margin-top: 0; margin-bottom: 20px;">Desliza lateralmente para ver más</p>
+        
+        <div class="video-carousel">
+          <iframe id="yt1" src="https://www.youtube.com/embed/NG2zyeVRcbs?rel=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/4HOaRLc25pw?rel=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/j-RpvIuazmc?rel=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARD 3: ACTO -->
+    <section class="card">
+      <div class="card-content" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-tilt-scale="1.02" data-tilt-speed="1000">
+        <h2 class="section-title">Acto de Juramento</h2>
+        <div class="date-large">
+          <div class="day">22</div>
+          <div class="month">Mayo | 10:00 A.M.</div>
+        </div>
+        <a href="https://maps.app.goo.gl/1uyBJ6dg3VXVsHAu6" target="_blank" class="big-map-link">
+          <div class="map-overlay">
+            <svg viewBox="0 0 24 24" class="map-pin"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Abrir mapa en grande</span>
+          </div>
+          <!-- Mapa embebido decorativo -->
+          <iframe src="https://maps.google.com/maps?q=Sucre,Bolivia&t=&z=14&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CARD 4: RECEPCIÓN -->
+    <section class="card">
+      <div class="card-content" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-tilt-scale="1.02" data-tilt-speed="1000">
+        <h2 class="section-title">Recepción Social</h2>
+        <div class="date-large">
+          <div class="day">22</div>
+          <div class="month">Mayo | 6:00 P.M.</div>
+        </div>
+        <p class="address-text">Diagonal Jaime Mendoza<br>Zona Rumi Rumi #187</p>
+        <a href="https://maps.app.goo.gl/jVjxTMJRWBDbBzgX6" target="_blank" class="big-map-link">
+          <div class="map-overlay">
+            <svg viewBox="0 0 24 24" class="map-pin"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            <span>Abrir mapa en grande</span>
+          </div>
+          <!-- Mapa embebido decorativo -->
+          <iframe src="https://maps.google.com/maps?q=Diagonal+Jaime+Mendoza+zona+rumi+rumi+187+Sucre+Bolivia&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CARD 5: CONFIRMACIÓN -->
+    <section class="card">
+      <div class="card-content" data-tilt data-tilt-glare data-tilt-max-glare="0.2" data-tilt-scale="1.02" data-tilt-speed="1000">
+        <div class="icon-container-small">
+          <svg viewBox="0 0 100 100" class="diploma-icon">
+            <path d="M25,35 L75,35 A10,10 0 0,1 85,45 L85,55 A10,10 0 0,1 75,65 L25,65 A10,10 0 0,1 15,55 L15,45 A10,10 0 0,1 25,35 Z" fill="none" stroke="var(--gold)" stroke-width="1.5" transform="rotate(-20 50 50)"/>
+            <path d="M30,45 L70,45" stroke="var(--gold)" stroke-width="1" transform="rotate(-20 50 50)"/>
+            <path d="M30,55 L60,55" stroke="var(--gold)" stroke-width="1" transform="rotate(-20 50 50)"/>
+            <circle cx="50" cy="50" r="6" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+            <path d="M46,55 L40,70 L50,65 L60,70 L54,55" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="parents">
+          <span class="parents-title">Con el cariño de mis papás:</span><br>
+          Freddy Arancibia Arancibia<br>
+          Justina Mallon Jacome
+        </div>
+        <p class="message mt-3">Con tu presencia, este día será<br>aún más extraordinario.</p>
+        <p class="confirm-text">Por favor, confirma tu asistencia.</p>
+        <a href="https://wa.me/59161887983?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20tu%20graduación." target="_blank" class="btn-confirm">Confirmar Asistencia</a>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
