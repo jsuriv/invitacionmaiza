@@ -105,36 +105,40 @@ html, body {
   justify-content: center;
   align-items: flex-start;
   position: relative;
-  margin-bottom: 20px; /* Tarjetas mucho más apegadas */
+  margin-bottom: 25px;
+  perspective: 1000px;
   opacity: 0;
-  transform: translateY(60px) scale(0.98);
-  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(100px) scale(0.85) rotateX(15deg);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.15);
 }
 .card.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1) rotateX(0deg);
 }
 .card:last-child { margin-bottom: 0; }
 
 .card-content {
-  width: 96%; /* Mayor tamaño horizontal */
-  max-width: 600px; /* Mayor tamaño máximo */
-  padding: 55px 30px; /* Ligeramente más grande */
+  width: 98%;
+  max-width: 650px;
+  padding: 60px 25px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  /* Ultra-premium glassmorphism */
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: rgba(10, 5, 20, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  border-right: 1px solid rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 2px 20px rgba(212, 175, 55, 0.15);
+  overflow: hidden;
+  position: relative;
+  animation: border-shimmer 4s infinite alternate ease-in-out;
+}
+
+@keyframes border-shimmer {
+  0% { box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 2px 10px rgba(212, 175, 55, 0.1), 0 0 10px rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.2); }
+  100% { box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 2px 30px rgba(212, 175, 55, 0.4), 0 0 30px rgba(212, 175, 55, 0.4); border-color: rgba(212, 175, 55, 0.6); }
 }
 
 /* --- Typography --- */
@@ -150,35 +154,31 @@ html, body {
 }
 
 .title {
-  font-size: clamp(2rem, 8vw, 3rem); /* Fuente fluida para evitar colisiones */
-  line-height: 1.15;
-  margin: 0 0 20px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 3.5rem);
+  color: #fcebbb;
+  margin: 0;
+  line-height: 1.1;
   font-weight: 700;
-  background: linear-gradient(to bottom right, #ffffff, #fbeea0, #d4af37);
+  background: linear-gradient(to bottom, #ffffff, #d4af37);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.9));
 }
 
 .section-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--gold);
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-bottom: 30px;
-  position: relative;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  color: #fcebbb;
+  margin-bottom: 25px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(to bottom, #ffffff, #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.9));
 }
 
 .agradecimiento-text {
@@ -462,7 +462,7 @@ body.no-scroll {
 
 /* Responsiveness for small screens */
 @media (max-width: 480px) {
-  .card-content { padding: 45px 25px; width: 98%; }
+  .card-content { padding: 45px 15px; width: 98%; border-radius: 20px; }
   .big-map-link { height: 260px; }
-  .btn-confirm { padding: 14px 30px; font-size: 0.85rem; }
+  .btn-confirm { padding: 14px 25px; font-size: 0.9rem; width: 90%; }
 }

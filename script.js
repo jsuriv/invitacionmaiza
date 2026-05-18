@@ -103,10 +103,13 @@ if (openBtn) {
     overlay.style.opacity = '0';
     document.body.classList.remove('no-scroll');
     
-    // Intentar forzar autoplay del Spotify recargando el iframe tras el clic del usuario
-    const spotify = document.getElementById('spotify-player');
-    if (spotify) {
-      spotify.src = spotify.src;
+    // Attempt to force autoplay the YouTube player
+    const ytPlayer = document.getElementById('yt-player');
+    if (ytPlayer && ytPlayer.contentWindow) {
+      ytPlayer.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      if (!ytPlayer.src.includes('autoplay=1')) {
+        ytPlayer.src += '&autoplay=1';
+      }
     }
 
     setTimeout(() => {
