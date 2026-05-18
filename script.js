@@ -103,33 +103,10 @@ if (openBtn) {
     overlay.style.opacity = '0';
     document.body.classList.remove('no-scroll');
     
-    // Video Carousel Auto-Rotation (cada 15 segundos)
-    const carouselVideos = document.querySelectorAll('.video-carousel iframe');
-    let currentVidIndex = 0;
-
-    if (carouselVideos.length > 0) {
-      // Iniciar el primer video
-      carouselVideos[0].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-      
-      setInterval(() => {
-        // Pausar el actual
-        if (carouselVideos[currentVidIndex].contentWindow) {
-          carouselVideos[currentVidIndex].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-        }
-        
-        // Pasar al siguiente
-        currentVidIndex = (currentVidIndex + 1) % carouselVideos.length;
-        
-        // Hacer scroll suave hacia el nuevo video en el carrusel
-        carouselVideos[currentVidIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        
-        // Reproducir el nuevo video tras el scroll
-        setTimeout(() => {
-          if (carouselVideos[currentVidIndex].contentWindow) {
-            carouselVideos[currentVidIndex].contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-          }
-        }, 800);
-      }, 15000);
+    // Intentar forzar autoplay del Spotify recargando el iframe tras el clic del usuario
+    const spotify = document.getElementById('spotify-player');
+    if (spotify) {
+      spotify.src = spotify.src;
     }
 
     setTimeout(() => {
